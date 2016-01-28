@@ -18,3 +18,26 @@ def cifar():
     data = cifar_train()
     data['test_batch'] = cifar_test()
     return data
+
+
+def read_sentiment_data(f_name):
+    data = []
+    with open('datasets/sentiment_labelled_sentences/' + f_name, 'rb') as f:
+        review = ''
+        for line in f:
+            if line[-2] in ['0', '1']:
+                data.append((review + line[:-3], line[-2]))
+                review = ''
+            else:
+                review += line
+    return data
+
+def sentiment_imdb():
+    return read_sentiment_data('imdb_labelled.txt')
+
+def sentiment_amazon():
+    return read_sentiment_data('amazon_cells_labelled.txt')
+
+def sentiment_yelp():
+    return read_sentiment_data('yelp_labelled.txt')
+
