@@ -4,8 +4,8 @@ def cifar_train():
     import cPickle
     data = {}
     for batch_num in range(1, 6):
-        with open('datasets/cifar-10-batches-py/data_batch_' + batch_num, 'rb') as f:
-            data['batch_' + batch_num] = cPickle.load(f)
+        with open('datasets/cifar-10-batches-py/data_batch_' + str(batch_num), 'rb') as f:
+            data['batch_' + str(batch_num)] = cPickle.load(f)
     return data
 
 def cifar_test():
