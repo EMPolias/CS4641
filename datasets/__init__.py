@@ -3,6 +3,7 @@
 from collections import Counter
 
 import random
+import numpy as np
 
 
 def cifar_batches():
@@ -78,8 +79,8 @@ def sentiment(bag_size=100):
     labels = []
     word_in_example = lambda word, example: 1 if word in example else 0
     for example, label in data_:
-        labels.append(label)
-        data.append([word_in_example(word, example) for word, _ in bag_of_words])
+        labels.append(int(label))
+        data.append(np.array([word_in_example(word, example) for word, _ in bag_of_words]))
 
     # Shuffle data and separate into train and test set.
     data, labels = shuffle_data(data, labels)
