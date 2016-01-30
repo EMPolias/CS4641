@@ -73,8 +73,6 @@ def sentiment(bag_size=100):
             all_words[word] += 1
     bag_of_words = all_words.most_common(bag_size)
 
-    print bag_of_words
-
     # Create features (whether example has each of the words in bag).
     data = []
     labels = []
