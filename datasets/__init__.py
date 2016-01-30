@@ -1,5 +1,8 @@
 """Methods for importing the datasets in python-usable format."""
 
+import random
+
+
 def cifar_batches():
     import cPickle
     data = []
@@ -17,16 +20,24 @@ def cifar_test_batch():
 def cifar():
     data_ = cifar_batches() + [cifar_test_batch()]
     join_batches = lambda r1, r2, cat: [x for sublist in [batch[cat] for batch in data_[r1:r2]] for x in sublist]
+    train_data, train_labels = shuffle_data(join_batches(0, 4, 'data'), join_batches(0, 4, 'labels'))
+    test_data, test_labels = shuffle_data(join_batches(4, 6, 'data'), join_batches(4, 6, 'labels'))
+
     return {
             'train': {
-                'data': join_batches(0, 4, 'data'),
-                'labels': join_batches(0, 4, 'labels')
+                'data': train_data,
+                'labels': train_labels
                 },
             'test': {
-                'data': join_batches(4, 6, 'data'),
-                'labels': join_batches(4, 6, 'labels')
+                'data': test_data,
+                'labels': test_labels
                 }
             }
+
+def shuffle_data(data, labels):
+    z = zip(data, labels)
+    random.shuffle(z)
+    return zip(*z)
 
 
 def read_sentiment_data(f_name):
