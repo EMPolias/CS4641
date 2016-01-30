@@ -1,5 +1,7 @@
 """Methods for importing the datasets in python-usable format."""
 
+from collections import Counter
+
 import random
 
 
@@ -61,3 +63,36 @@ def sentiment_amazon():
 def sentiment_yelp():
     return read_sentiment_data('yelp_labelled.txt')
 
+def sentiment(bag_size=100):
+    data_ = sentiment_imdb() + sentiment_amazon() + sentiment_yelp()
+
+    # Calculate the bag_size most common words.
+    all_words = Counter()
+    for example, _ in data_:
+        for word in example.split(' '):
+            all_words[word] += 1
+    bag_of_words = all_words.most_common(bag_size)
+
+    print bag_of_words
+
+    # Create features (whether example has each of the words in bag).
+    data = []
+    labels = []
+    word_in_example = lambda word, example: 1 if word in example else 0
+    for example, label in data_:
+        labels.append(label)
+        data.append([word_in_example(word, example) for word, _ in bag_of_words])
+
+    # Shuffle data and separate into train and test set.
+    data, labels = shuffle_data(data, labels)
+    offset = int(len(data) * 0.7)
+    return {
+            'train': {
+                'data': data[0:offset],
+                'labels': labels[0:offset]
+                },
+            'test': {
+                'data': data[offset:],
+                'labels': labels[offset:]
+                }
+            }
