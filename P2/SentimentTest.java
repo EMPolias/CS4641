@@ -5,15 +5,9 @@ import java.io.FileReader;
 import java.io.BufferedReader;
 
 
-class SentimentReader {
+class SentimentTest {
 
   private static Instance[] initializeInstances() {
-    
-
-
-  }
-
-  private static ArrayList<Instance> getDataFromFile(String fileName) {
     ArrayList<Instance> data = new ArrayList<Instance>();
 
     try {
