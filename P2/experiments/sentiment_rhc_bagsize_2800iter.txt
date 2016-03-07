@@ -1,0 +1,490 @@
+Training NN with RHC and bagSize=5
+  Iteration 0 error: 20.619
+  Iteration 100 error: 20.524
+  Iteration 200 error: 19.333
+  Iteration 300 error: 20.143
+  Iteration 400 error: 20.429
+  Iteration 500 error: 20.429
+  Iteration 600 error: 20.429
+  Iteration 700 error: 20.429
+  Iteration 800 error: 19.714
+  Iteration 900 error: 20.429
+  Iteration 1000 error: 19.381
+  Iteration 1100 error: 20.286
+  Iteration 1200 error: 21.810
+  Iteration 1300 error: 20.571
+  Iteration 1400 error: 20.762
+  Iteration 1500 error: 20.476
+  Iteration 1600 error: 19.571
+  Iteration 1700 error: 19.571
+  Iteration 1800 error: 19.571
+  Iteration 1900 error: 20.476
+  Iteration 2000 error: 19.571
+  Iteration 2100 error: 21.714
+  Iteration 2200 error: 19.238
+  Iteration 2300 error: 20.476
+  Iteration 2400 error: 20.476
+  Iteration 2500 error: 20.476
+  Iteration 2600 error: 19.571
+  Iteration 2700 error: 19.571
+Final Results:
+Correctly classified: 470.0
+Incorrectly classified: 430.0
+Percent: 52.222
+Training time: 17.122
+Testing time: 0.003
+Training NN with RHC and bagSize=10
+  Iteration 0 error: 21.619
+  Iteration 100 error: 20.714
+  Iteration 200 error: 20.619
+  Iteration 300 error: 20.762
+  Iteration 400 error: 19.952
+  Iteration 500 error: 19.762
+  Iteration 600 error: 19.095
+  Iteration 700 error: 18.952
+  Iteration 800 error: 19.143
+  Iteration 900 error: 18.952
+  Iteration 1000 error: 19.095
+  Iteration 1100 error: 19.381
+  Iteration 1200 error: 19.238
+  Iteration 1300 error: 18.524
+  Iteration 1400 error: 18.095
+  Iteration 1500 error: 18.714
+  Iteration 1600 error: 18.524
+  Iteration 1700 error: 18.762
+  Iteration 1800 error: 18.571
+  Iteration 1900 error: 18.524
+  Iteration 2000 error: 18.476
+  Iteration 2100 error: 18.429
+  Iteration 2200 error: 18.619
+  Iteration 2300 error: 18.762
+  Iteration 2400 error: 18.857
+  Iteration 2500 error: 18.524
+  Iteration 2600 error: 18.619
+  Iteration 2700 error: 18.762
+Final Results:
+Correctly classified: 506.0
+Incorrectly classified: 394.0
+Percent: 56.222
+Training time: 17.029
+Testing time: 0.003
+Training NN with RHC and bagSize=20
+  Iteration 0 error: 20.905
+  Iteration 100 error: 23.619
+  Iteration 200 error: 22.048
+  Iteration 300 error: 21.810
+  Iteration 400 error: 20.238
+  Iteration 500 error: 19.762
+  Iteration 600 error: 19.048
+  Iteration 700 error: 18.714
+  Iteration 800 error: 18.905
+  Iteration 900 error: 19.095
+  Iteration 1000 error: 18.714
+  Iteration 1100 error: 18.714
+  Iteration 1200 error: 18.429
+  Iteration 1300 error: 18.048
+  Iteration 1400 error: 18.000
+  Iteration 1500 error: 18.000
+  Iteration 1600 error: 17.048
+  Iteration 1700 error: 17.429
+  Iteration 1800 error: 18.143
+  Iteration 1900 error: 17.524
+  Iteration 2000 error: 17.905
+  Iteration 2100 error: 17.762
+  Iteration 2200 error: 17.762
+  Iteration 2300 error: 18.000
+  Iteration 2400 error: 17.952
+  Iteration 2500 error: 18.238
+  Iteration 2600 error: 17.905
+  Iteration 2700 error: 17.333
+Final Results:
+Correctly classified: 538.0
+Incorrectly classified: 362.0
+Percent: 59.778
+Training time: 17.481
+Testing time: 0.003
+Training NN with RHC and bagSize=40
+  Iteration 0 error: 20.857
+  Iteration 100 error: 20.524
+  Iteration 200 error: 20.238
+  Iteration 300 error: 19.571
+  Iteration 400 error: 19.381
+  Iteration 500 error: 19.381
+  Iteration 600 error: 18.762
+  Iteration 700 error: 18.667
+  Iteration 800 error: 18.714
+  Iteration 900 error: 18.571
+  Iteration 1000 error: 19.333
+  Iteration 1100 error: 18.381
+  Iteration 1200 error: 18.571
+  Iteration 1300 error: 18.381
+  Iteration 1400 error: 18.095
+  Iteration 1500 error: 18.381
+  Iteration 1600 error: 18.000
+  Iteration 1700 error: 17.857
+  Iteration 1800 error: 17.810
+  Iteration 1900 error: 17.857
+  Iteration 2000 error: 17.714
+  Iteration 2100 error: 17.571
+  Iteration 2200 error: 17.429
+  Iteration 2300 error: 17.619
+  Iteration 2400 error: 17.381
+  Iteration 2500 error: 17.286
+  Iteration 2600 error: 17.429
+  Iteration 2700 error: 17.476
+Final Results:
+Correctly classified: 530.0
+Incorrectly classified: 370.0
+Percent: 58.889
+Training time: 22.009
+Testing time: 0.004
+Training NN with RHC and bagSize=80
+  Iteration 0 error: 21.476
+  Iteration 100 error: 21.619
+  Iteration 200 error: 20.905
+  Iteration 300 error: 20.143
+  Iteration 400 error: 20.762
+  Iteration 500 error: 20.286
+  Iteration 600 error: 19.286
+  Iteration 700 error: 18.905
+  Iteration 800 error: 18.905
+  Iteration 900 error: 18.429
+  Iteration 1000 error: 17.429
+  Iteration 1100 error: 17.667
+  Iteration 1200 error: 17.190
+  Iteration 1300 error: 16.810
+  Iteration 1400 error: 17.333
+  Iteration 1500 error: 17.190
+  Iteration 1600 error: 16.714
+  Iteration 1700 error: 16.810
+  Iteration 1800 error: 16.762
+  Iteration 1900 error: 16.381
+  Iteration 2000 error: 16.619
+  Iteration 2100 error: 16.524
+  Iteration 2200 error: 17.619
+  Iteration 2300 error: 17.238
+  Iteration 2400 error: 17.381
+  Iteration 2500 error: 17.333
+  Iteration 2600 error: 17.238
+  Iteration 2700 error: 17.143
+Final Results:
+Correctly classified: 547.0
+Incorrectly classified: 353.0
+Percent: 60.778
+Training time: 28.614
+Testing time: 0.004
+Training NN with RHC and bagSize=120
+  Iteration 0 error: 21.476
+  Iteration 100 error: 21.286
+  Iteration 200 error: 22.143
+  Iteration 300 error: 21.905
+  Iteration 400 error: 21.476
+  Iteration 500 error: 21.048
+  Iteration 600 error: 19.952
+  Iteration 700 error: 19.381
+  Iteration 800 error: 19.476
+  Iteration 900 error: 19.238
+  Iteration 1000 error: 19.048
+  Iteration 1100 error: 19.333
+  Iteration 1200 error: 19.667
+  Iteration 1300 error: 18.857
+  Iteration 1400 error: 18.571
+  Iteration 1500 error: 18.476
+  Iteration 1600 error: 18.667
+  Iteration 1700 error: 18.810
+  Iteration 1800 error: 18.857
+  Iteration 1900 error: 18.571
+  Iteration 2000 error: 18.619
+  Iteration 2100 error: 18.619
+  Iteration 2200 error: 18.476
+  Iteration 2300 error: 18.286
+  Iteration 2400 error: 18.571
+  Iteration 2500 error: 18.524
+  Iteration 2600 error: 18.286
+  Iteration 2700 error: 18.381
+Final Results:
+Correctly classified: 517.0
+Incorrectly classified: 383.0
+Percent: 57.444
+Training time: 38.234
+Testing time: 0.005
+Training NN with RHC and bagSize=160
+  Iteration 0 error: 21.048
+  Iteration 100 error: 21.476
+  Iteration 200 error: 21.476
+  Iteration 300 error: 21.143
+  Iteration 400 error: 20.905
+  Iteration 500 error: 20.714
+  Iteration 600 error: 21.048
+  Iteration 700 error: 21.000
+  Iteration 800 error: 20.524
+  Iteration 900 error: 20.667
+  Iteration 1000 error: 20.143
+  Iteration 1100 error: 20.143
+  Iteration 1200 error: 20.048
+  Iteration 1300 error: 19.667
+  Iteration 1400 error: 19.143
+  Iteration 1500 error: 18.952
+  Iteration 1600 error: 19.095
+  Iteration 1700 error: 18.857
+  Iteration 1800 error: 18.714
+  Iteration 1900 error: 18.571
+  Iteration 2000 error: 18.286
+  Iteration 2100 error: 18.476
+  Iteration 2200 error: 18.095
+  Iteration 2300 error: 18.381
+  Iteration 2400 error: 18.143
+  Iteration 2500 error: 17.905
+  Iteration 2600 error: 18.095
+  Iteration 2700 error: 17.905
+Final Results:
+Correctly classified: 524.0
+Incorrectly classified: 376.0
+Percent: 58.222
+Training time: 45.061
+Testing time: 0.006
+Training NN with RHC and bagSize=200
+  Iteration 0 error: 20.857
+  Iteration 100 error: 20.429
+  Iteration 200 error: 20.762
+  Iteration 300 error: 20.476
+  Iteration 400 error: 20.048
+  Iteration 500 error: 20.429
+  Iteration 600 error: 19.905
+  Iteration 700 error: 20.286
+  Iteration 800 error: 19.857
+  Iteration 900 error: 19.714
+  Iteration 1000 error: 19.762
+  Iteration 1100 error: 19.048
+  Iteration 1200 error: 19.190
+  Iteration 1300 error: 18.952
+  Iteration 1400 error: 19.095
+  Iteration 1500 error: 18.857
+  Iteration 1600 error: 18.476
+  Iteration 1700 error: 18.476
+  Iteration 1800 error: 18.238
+  Iteration 1900 error: 18.095
+  Iteration 2000 error: 18.048
+  Iteration 2100 error: 17.810
+  Iteration 2200 error: 17.810
+  Iteration 2300 error: 17.714
+  Iteration 2400 error: 17.333
+  Iteration 2500 error: 17.667
+  Iteration 2600 error: 17.905
+  Iteration 2700 error: 17.905
+Final Results:
+Correctly classified: 532.0
+Incorrectly classified: 368.0
+Percent: 59.111
+Training time: 61.576
+Testing time: 0.007
+Training NN with RHC and bagSize=300
+  Iteration 0 error: 22.095
+  Iteration 100 error: 21.571
+  Iteration 200 error: 22.095
+  Iteration 300 error: 21.714
+  Iteration 400 error: 22.048
+  Iteration 500 error: 21.952
+  Iteration 600 error: 21.286
+  Iteration 700 error: 21.905
+  Iteration 800 error: 21.952
+  Iteration 900 error: 21.762
+  Iteration 1000 error: 21.286
+  Iteration 1100 error: 21.238
+  Iteration 1200 error: 20.571
+  Iteration 1300 error: 19.952
+  Iteration 1400 error: 20.476
+  Iteration 1500 error: 20.667
+  Iteration 1600 error: 20.524
+  Iteration 1700 error: 20.667
+  Iteration 1800 error: 20.571
+  Iteration 1900 error: 20.524
+  Iteration 2000 error: 20.333
+  Iteration 2100 error: 20.619
+  Iteration 2200 error: 20.476
+  Iteration 2300 error: 20.286
+  Iteration 2400 error: 19.762
+  Iteration 2500 error: 19.571
+  Iteration 2600 error: 19.571
+  Iteration 2700 error: 19.286
+Final Results:
+Correctly classified: 480.0
+Incorrectly classified: 420.0
+Percent: 53.333
+Training time: 96.759
+Testing time: 0.014
+Training NN with RHC and bagSize=500
+  Iteration 0 error: 21.714
+  Iteration 100 error: 21.762
+  Iteration 200 error: 22.286
+  Iteration 300 error: 22.571
+  Iteration 400 error: 22.571
+  Iteration 500 error: 22.810
+  Iteration 600 error: 22.000
+  Iteration 700 error: 21.571
+  Iteration 800 error: 22.000
+  Iteration 900 error: 21.667
+  Iteration 1000 error: 21.905
+  Iteration 1100 error: 21.190
+  Iteration 1200 error: 21.143
+  Iteration 1300 error: 20.952
+  Iteration 1400 error: 21.381
+  Iteration 1500 error: 21.190
+  Iteration 1600 error: 21.333
+  Iteration 1700 error: 20.952
+  Iteration 1800 error: 21.143
+  Iteration 1900 error: 20.810
+  Iteration 2000 error: 20.524
+  Iteration 2100 error: 20.524
+  Iteration 2200 error: 20.381
+  Iteration 2300 error: 21.048
+  Iteration 2400 error: 20.667
+  Iteration 2500 error: 20.857
+  Iteration 2600 error: 20.714
+  Iteration 2700 error: 20.429
+Final Results:
+Correctly classified: 489.0
+Incorrectly classified: 411.0
+Percent: 54.333
+Training time: 170.314
+Testing time: 0.020
+Training NN with RHC and bagSize=700
+  Iteration 0 error: 20.429
+  Iteration 100 error: 20.095
+  Iteration 200 error: 20.333
+  Iteration 300 error: 20.286
+  Iteration 400 error: 20.524
+  Iteration 500 error: 20.619
+  Iteration 600 error: 20.857
+  Iteration 700 error: 20.762
+  Iteration 800 error: 20.857
+  Iteration 900 error: 20.619
+  Iteration 1000 error: 20.810
+  Iteration 1100 error: 20.571
+  Iteration 1200 error: 20.476
+  Iteration 1300 error: 20.571
+  Iteration 1400 error: 20.429
+  Iteration 1500 error: 20.048
+  Iteration 1600 error: 20.333
+  Iteration 1700 error: 20.143
+  Iteration 1800 error: 20.143
+  Iteration 1900 error: 20.286
+  Iteration 2000 error: 19.762
+  Iteration 2100 error: 20.143
+  Iteration 2200 error: 20.381
+  Iteration 2300 error: 20.143
+  Iteration 2400 error: 19.857
+  Iteration 2500 error: 19.905
+  Iteration 2600 error: 19.905
+  Iteration 2700 error: 19.810
+Final Results:
+Correctly classified: 480.0
+Incorrectly classified: 420.0
+Percent: 53.333
+Training time: 240.920
+Testing time: 0.026
+Training NN with RHC and bagSize=850
+  Iteration 0 error: 21.571
+  Iteration 100 error: 21.571
+  Iteration 200 error: 21.571
+  Iteration 300 error: 21.571
+  Iteration 400 error: 21.429
+  Iteration 500 error: 21.381
+  Iteration 600 error: 21.238
+  Iteration 700 error: 21.429
+  Iteration 800 error: 21.381
+  Iteration 900 error: 21.905
+  Iteration 1000 error: 21.857
+  Iteration 1100 error: 21.905
+  Iteration 1200 error: 21.714
+  Iteration 1300 error: 21.810
+  Iteration 1400 error: 21.762
+  Iteration 1500 error: 21.952
+  Iteration 1600 error: 21.857
+  Iteration 1700 error: 21.381
+  Iteration 1800 error: 21.333
+  Iteration 1900 error: 21.381
+  Iteration 2000 error: 21.381
+  Iteration 2100 error: 21.429
+  Iteration 2200 error: 21.286
+  Iteration 2300 error: 21.381
+  Iteration 2400 error: 21.429
+  Iteration 2500 error: 21.762
+  Iteration 2600 error: 21.476
+  Iteration 2700 error: 21.238
+Final Results:
+Correctly classified: 452.0
+Incorrectly classified: 448.0
+Percent: 50.222
+Training time: 303.153
+Testing time: 0.036
+Training NN with RHC and bagSize=1000
+  Iteration 0 error: 22.190
+  Iteration 100 error: 22.286
+  Iteration 200 error: 22.619
+  Iteration 300 error: 22.619
+  Iteration 400 error: 22.571
+  Iteration 500 error: 22.333
+  Iteration 600 error: 21.810
+  Iteration 700 error: 21.667
+  Iteration 800 error: 21.714
+  Iteration 900 error: 21.476
+  Iteration 1000 error: 21.476
+  Iteration 1100 error: 21.333
+  Iteration 1200 error: 21.048
+  Iteration 1300 error: 21.286
+  Iteration 1400 error: 22.429
+  Iteration 1500 error: 22.048
+  Iteration 1600 error: 21.810
+  Iteration 1700 error: 21.381
+  Iteration 1800 error: 21.429
+  Iteration 1900 error: 21.190
+  Iteration 2000 error: 21.286
+  Iteration 2100 error: 21.333
+  Iteration 2200 error: 21.238
+  Iteration 2300 error: 21.095
+  Iteration 2400 error: 21.095
+  Iteration 2500 error: 21.286
+  Iteration 2600 error: 21.286
+  Iteration 2700 error: 21.238
+Final Results:
+Correctly classified: 459.0
+Incorrectly classified: 441.0
+Percent: 51.000
+Training time: 360.274
+Testing time: 0.044
+Training NN with RHC and bagSize=1200
+  Iteration 0 error: 20.381
+  Iteration 100 error: 20.429
+  Iteration 200 error: 20.524
+  Iteration 300 error: 20.476
+  Iteration 400 error: 21.143
+  Iteration 500 error: 21.333
+  Iteration 600 error: 21.286
+  Iteration 700 error: 21.048
+  Iteration 800 error: 20.524
+  Iteration 900 error: 20.571
+  Iteration 1000 error: 20.524
+  Iteration 1100 error: 20.571
+  Iteration 1200 error: 20.524
+  Iteration 1300 error: 20.476
+  Iteration 1400 error: 20.476
+  Iteration 1500 error: 20.143
+  Iteration 1600 error: 20.143
+  Iteration 1700 error: 19.714
+  Iteration 1800 error: 19.762
+  Iteration 1900 error: 19.619
+  Iteration 2000 error: 19.810
+  Iteration 2100 error: 19.905
+  Iteration 2200 error: 19.762
+  Iteration 2300 error: 19.762
+  Iteration 2400 error: 19.857
+  Iteration 2500 error: 19.857
+  Iteration 2600 error: 19.810
+  Iteration 2700 error: 19.952
+Final Results:
+Correctly classified: 484.0
+Incorrectly classified: 416.0
+Percent: 53.778
+Training time: 456.346
+Testing time: 0.048
