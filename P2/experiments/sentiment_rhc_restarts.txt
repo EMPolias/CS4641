@@ -1,0 +1,48 @@
+Training multiple NNs with RHC and bagSize=200 and numberOfRestarts=1
+Final Results:
+Train Error: 17.286
+Test Percent Correct: 59.667
+Training time: 120.362
+Testing time: 0.007
+Training multiple NNs with RHC and bagSize=200 and numberOfRestarts=2
+Final Results:
+Train Error: 17.190
+Test Percent Correct: 59.889
+Training time: 227.584
+Testing time: 0.007
+Training multiple NNs with RHC and bagSize=200 and numberOfRestarts=3
+Final Results:
+Train Error: 16.952
+Test Percent Correct: 60.444
+Training time: 333.557
+Testing time: 0.007
+Training multiple NNs with RHC and bagSize=200 and numberOfRestarts=5
+Final Results:
+Train Error: 17.000
+Test Percent Correct: 60.333
+Training time: 554.841
+Testing time: 0.007
+Training multiple NNs with RHC and bagSize=200 and numberOfRestarts=8
+Final Results:
+Train Error: 16.095
+Test Percent Correct: 62.444
+Training time: 886.687
+Testing time: 0.007
+Training multiple NNs with RHC and bagSize=200 and numberOfRestarts=10
+Final Results:
+Train Error: 16.238
+Test Percent Correct: 62.111
+Training time: 1109.036
+Testing time: 0.008
+Training multiple NNs with RHC and bagSize=200 and numberOfRestarts=15
+Final Results:
+Train Error: 15.619
+Test Percent Correct: 63.556
+Training time: 1636.435
+Testing time: 0.007
+Training multiple NNs with RHC and bagSize=200 and numberOfRestarts=20
+Final Results:
+Train Error: 16.048
+Test Percent Correct: 62.556
+Training time: 2198.658
+Testing time: 0.007
