@@ -3,20 +3,20 @@ from temp import * # where the variables are defined
 
 
 plt.figure()
-plt.title('Randomized Hill Climbing: Performance x Number of Random Restarts\n(6000 training iterations)')
-plt.plot(numberOfRestarts, test_error, '-', label='test error')
-plt.plot(numberOfRestarts, train_error, '-', label='train error')
+plt.title('Randomized Hill Climbing: Performance x Training Set Size\n(6000 training iterations, 8 Restarts)')
+plt.plot(datasetPercentage, test_error, '-', label='test error')
+plt.plot(datasetPercentage, train_error, '-', label='train error')
 plt.legend()
-plt.xlabel('Number of Restarts')
+plt.xlabel('Percentage of Training Set')
 plt.ylabel('Sum of Squares Error')
 plt.show()
 
 
 plt.figure()
-plt.title('Randomized Hill Climbing: Performance x Number of Random Restarts\n(6000 training iterations)')
-plt.plot(numberOfRestarts, testing_time, '-', label='test time')
-plt.plot(numberOfRestarts, training_time, '-', label='train time')
+plt.title('Randomized Hill Climbing: Performance x Training Set Size\n(6000 training iterations, 8 Restarts)')
+plt.plot(datasetPercentage, testing_time, '-', label='test time')
+plt.plot(datasetPercentage, training_time, '-', label='train time')
 plt.legend()
-plt.xlabel('Bag Size')
+plt.xlabel('Percentage of Training Set')
 plt.ylabel('Train/Test time')
 plt.show()

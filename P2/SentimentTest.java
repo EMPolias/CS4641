@@ -13,6 +13,7 @@ import java.io.FileReader;
 import java.io.BufferedReader;
 import java.util.Scanner;
 import java.text.DecimalFormat;
+import java.util.Arrays;
 
 
 class SentimentTest {
@@ -28,6 +29,7 @@ class SentimentTest {
       // experiment1(2800);
       // experiment1(5500);
       // experiment2(6000, "200");
+      experiment3(6000, "200", 8);
   } 
 
   private static void experiment1(int trainingIterations) {
@@ -149,6 +151,78 @@ class SentimentTest {
           System.out.println("Training time: " + df.format(trainingTime));
           System.out.println("Testing time: " + df.format(testingTime));
       }
+  }
+
+  private static void experiment3(int trainingIterations, String bagSize, int numberOfRestart) {
+      // EXPERIMENT 3 - Plotting learning curves for RHC, with 200 bagsize, 6000 iter, 15 random restarts.
+      double[] datasetPercentages = {0.05, 0.1, 0.3, 0.5, 0.7, 0.9};
+
+      for (double datasetPercentage : datasetPercentages) {
+          int bagSizeInt = Integer.parseInt(bagSize);
+
+          // Set up dataset.
+          Instance[] all_train_instances = initializeInstances(bagSize, false);
+          int lastIndex = (int)(all_train_instances.length * datasetPercentage);
+          Instance[] train_instances = Arrays.copyOfRange(all_train_instances, 0, lastIndex);
+          Instance[] test_instances = initializeInstances(bagSize, true);
+          DataSet set = new DataSet(train_instances);
+  
+          System.out.println("Training multiple NNs with RHC and bagSize=" +
+                              bagSize + " and numberOfRestarts=" + numberOfRestart +
+                              " and datasetPercentage=" + datasetPercentage);
+          double bestError = 100000;
+          OptimizationAlgorithm bestoa = null;
+          double start = System.nanoTime(), end = 0, trainingTime = 0, testingTime = 0;
+          
+          for (int i = 0; i < numberOfRestart; i++) {
+              // Set up optmization problem
+              BackPropagationNetwork network = factory.createClassificationNetwork(
+                  new int[] {bagSizeInt, 10, 1});
+              NeuralNetworkOptimizationProblem nnop = new NeuralNetworkOptimizationProblem(set, network, measure);
+              OptimizationAlgorithm oa = new RandomizedHillClimbing(nnop);
+
+              // Start Training
+              double error = train(oa, network, test_instances, trainingIterations);
+
+              if (error < bestError) {
+                  bestError = error;
+                  bestoa = oa;
+              }
+          }
+
+          end = System.nanoTime();
+          trainingTime = end - start;
+          trainingTime /= Math.pow(10,9);
+          
+          if (bestoa == null) throw new Error("bestoa not initialized");
+          Instance optimalInstance = bestoa.getOptimal();
+          BackPropagationNetwork network = factory.createClassificationNetwork(
+              new int[] {bagSizeInt, 10, 1});
+          network.setWeights(optimalInstance.getData());
+
+          double correct = 0, incorrect = 0;
+          double predicted, actual;
+          start = System.nanoTime();
+          for(int j = 0; j < test_instances.length; j++) {
+              network.setInputValues(test_instances[j].getData());
+              network.run();
+
+              predicted = Double.parseDouble(test_instances[j].getLabel().toString());
+              actual = Double.parseDouble(network.getOutputValues().toString());
+              double trash = Math.abs(predicted - actual) < 0.5 ? correct++ : incorrect++;
+          }
+
+          end = System.nanoTime();
+          testingTime = end - start;
+          testingTime /= Math.pow(10,9);
+
+          System.out.println("Final Results:");
+          System.out.println("Train Error: " + df.format(bestError));
+          System.out.println("Test Percent Correct: " + df.format(correct/(correct+incorrect)*100));
+          System.out.println("Training time: " + df.format(trainingTime));
+          System.out.println("Testing time: " + df.format(testingTime));
+      }
+
   }
 
   private static double train(OptimizationAlgorithm oa,
