@@ -1,0 +1,37 @@
+Training an NN with SimAn and bagSize=200 and datasetPercentage=0.05
+Final Results:
+Train Error: 20.238
+Test Percent Correct: 52.778
+Training time: 139.557
+Testing time: 0.009
+Training an NN with SimAn and bagSize=200 and datasetPercentage=0.1
+Final Results:
+Train Error: 19.619
+Test Percent Correct: 54.222
+Training time: 159.463
+Testing time: 0.007
+Training an NN with SimAn and bagSize=200 and datasetPercentage=0.3
+Final Results:
+Train Error: 18.238
+Test Percent Correct: 57.556
+Training time: 183.121
+Testing time: 0.007
+Training an NN with SimAn and bagSize=200 and datasetPercentage=0.5
+Final Results:
+Train Error: 17.571
+Test Percent Correct: 59.000
+Training time: 215.517
+Testing time: 0.007
+Training an NN with SimAn and bagSize=200 and datasetPercentage=0.7
+Final Results:
+Train Error: 16.905
+Test Percent Correct: 60.556
+Training time: 245.943
+Testing time: 0.008
+Training an NN with SimAn and bagSize=200 and datasetPercentage=0.9
+Final Results:
+Train Error: 16.571
+Test Percent Correct: 61.333
+Training time: 285.698
+Testing time: 0.007
+
