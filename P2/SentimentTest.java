@@ -31,11 +31,13 @@ class SentimentTest {
       // experiment1(2800);
       // experiment1(5500);
       // experiment1(10000);
+      // experiment3(5500, "80", 1);
       // experiment2(5500, "80");
       // experiment3(5500, "80", 8);
       // experiment4(5500, "80");
       // experiment4(15000, "80");
       // experiment5(20000, "80");
+      experiment6(5500, "80");
   } 
 
   private static void experiment1(int trainingIterations) {
@@ -296,6 +298,7 @@ class SentimentTest {
       // EXPERIMENT 5 - Plotting learning curves for GenAlg, with 200 bagsize, 6000 iter
       System.out.println("\nEXPERIMENT5");
       double[] datasetPercentages = {0.05, 0.1, 0.3, 0.5, 0.7, 0.9};
+      // double[] datasetPercentages = {0.9};
 
       for (double datasetPercentage : datasetPercentages) {
           int bagSizeInt = Integer.parseInt(bagSize);
@@ -353,6 +356,67 @@ class SentimentTest {
 
   }
 
+  private static void experiment6(int trainingIterations, String bagSize) {
+      // EXPERIMENT 6 - Plotting actual** learning curves for GenAlg, with 200 bagsize, 6000 iter
+      System.out.println("\nEXPERIMENT5");
+      // double[] datasetPercentages = {0.05, 0.1, 0.3, 0.5, 0.7, 0.9};
+      double[] datasetPercentages = {0.9};
+
+      for (double datasetPercentage : datasetPercentages) {
+          int bagSizeInt = Integer.parseInt(bagSize);
+
+          // Set up dataset.
+          Instance[] all_train_instances = initializeInstances(bagSize, false);
+          int lastIndex = (int)(all_train_instances.length * datasetPercentage);
+          Instance[] train_instances = Arrays.copyOfRange(all_train_instances, 0, lastIndex);
+          Instance[] test_instances = initializeInstances(bagSize, true);
+          DataSet set = new DataSet(train_instances);
+  
+          System.out.println("Training an NN with GenAlg and datasetPercentage=" + datasetPercentage);
+          double start = System.nanoTime(), end = 0, trainingTime = 0, testingTime = 0;
+          
+          // Set up optmization problem
+          BackPropagationNetwork network = factory.createClassificationNetwork(
+              new int[] {bagSizeInt, 10, 1});
+          NeuralNetworkOptimizationProblem nnop = new NeuralNetworkOptimizationProblem(set, network, measure);
+          // OptimizationAlgorithm oa = new StandardGeneticAlgorithm(200, 100, 10, nnop);
+          OptimizationAlgorithm oa = new StandardGeneticAlgorithm(200, 100, 80, nnop);
+
+          // Start Training
+          double error = train(oa, network, train_instances, trainingIterations);
+
+          end = System.nanoTime();
+          trainingTime = end - start;
+          trainingTime /= Math.pow(10,9);
+          
+          Instance optimalInstance = oa.getOptimal();
+          BackPropagationNetwork test_network = factory.createClassificationNetwork(
+              new int[] {bagSizeInt, 10, 1});
+          test_network.setWeights(optimalInstance.getData());
+
+          double correct = 0, incorrect = 0;
+          double predicted, actual;
+          start = System.nanoTime();
+          for(int j = 0; j < test_instances.length; j++) {
+              test_network.setInputValues(test_instances[j].getData());
+              test_network.run();
+
+              predicted = Double.parseDouble(test_instances[j].getLabel().toString());
+              actual = Double.parseDouble(test_network.getOutputValues().toString());
+              double trash = Math.abs(predicted - actual) < 0.5 ? correct++ : incorrect++;
+          }
+
+          end = System.nanoTime();
+          testingTime = end - start;
+          testingTime /= Math.pow(10,9);
+
+          System.out.println("Train Error: " + df.format(error));
+          System.out.println("Test Error: " + df.format(100 - (correct/(correct+incorrect)*100)));
+          System.out.println("Training time: " + df.format(trainingTime));
+          System.out.println("Testing time: " + df.format(testingTime));
+      }
+
+  }
   private static double train(OptimizationAlgorithm oa,
                             BackPropagationNetwork network,
                             Instance[] testing,
@@ -374,9 +438,9 @@ class SentimentTest {
               incorrect += Math.abs(Double.parseDouble(output.toString()) - Double.parseDouble(example.getLabel().toString())) < 0.5 ? 0 : 1;
           }
 
-          // if (i % 100 == 0) 
+          if (i % 100 == 0) 
           // if (i == trainingIterations - 1) 
-            // System.out.println("\tIteration " + i + " error: " + df.format(incorrect/length*100));
+            System.out.println("\tIteration " + i + " error: " + df.format(incorrect/length*100));
       }
       return (incorrect/length*100);
   }
