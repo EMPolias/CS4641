@@ -4,6 +4,7 @@ import shared.ErrorMeasure;
 import shared.DataSet;
 import opt.OptimizationAlgorithm;
 import opt.RandomizedHillClimbing;
+import opt.ga.StandardGeneticAlgorithm;
 import opt.SimulatedAnnealing;
 import func.nn.backprop.BackPropagationNetwork;
 import func.nn.backprop.BackPropagationNetworkFactory;
@@ -29,14 +30,17 @@ class SentimentTest {
   public static void main(String[] args) {
       // experiment1(2800);
       // experiment1(5500);
-      // experiment2(6000, "200");
-      // experiment3(6000, "200", 8);
-      // experiment4(6000, "200");
-      experiment4(15000, "200");
+      // experiment1(10000);
+      // experiment2(5500, "80");
+      // experiment3(5500, "80", 8);
+      // experiment4(5500, "80");
+      // experiment4(15000, "80");
+      // experiment5(20000, "80");
   } 
 
   private static void experiment1(int trainingIterations) {
       // EXPERIMENT 1 - Sanity check: making sure we have a reasonable bag size.
+      System.out.println("\nEXPERIMENT1");
       String[] bagSizes = {"5", "10", "20", "40", "80", "120", "160", "200", "300", "500", "700", "850", "1000", "1200"};
       
       for (String bagSize : bagSizes) {
@@ -56,7 +60,7 @@ class SentimentTest {
           // Start Training
           double start = System.nanoTime(), end, trainingTime, testingTime, correct = 0, incorrect = 0;
           System.out.println("Training NN with RHC and bagSize=" + bagSize);
-          train(oa, network, test_instances, trainingIterations);
+          double error = train(oa, network, train_instances, trainingIterations);
           end = System.nanoTime();
 
           trainingTime = end - start;
@@ -80,10 +84,8 @@ class SentimentTest {
           testingTime = end - start;
           testingTime /= Math.pow(10,9);
 
-          System.out.println("Final Results:");
-          System.out.println("Correctly classified: " + correct);
-          System.out.println("Incorrectly classified: " + incorrect);
-          System.out.println("Percent: " + df.format(correct/(correct+incorrect)*100));
+          System.out.println("Train Error: " + df.format(error));
+          System.out.println("Test Error: " + df.format(100 - (correct/(correct+incorrect)*100)));
           System.out.println("Training time: " + df.format(trainingTime));
           System.out.println("Testing time: " + df.format(testingTime));
       }
@@ -91,6 +93,7 @@ class SentimentTest {
 
   private static void experiment2(int trainingIterations, String bagSize) {
       // EXPERIMENT 2 - Random restarting RHC
+      System.out.println("\nEXPERIMENT2");
       int[] numberOfRestarts = {1, 2, 3, 5, 8, 10, 15, 20};
 
       for (int numberOfRestart : numberOfRestarts) {
@@ -114,7 +117,7 @@ class SentimentTest {
               OptimizationAlgorithm oa = new RandomizedHillClimbing(nnop);
 
               // Start Training
-              double error = train(oa, network, test_instances, trainingIterations);
+              double error = train(oa, network, train_instances, trainingIterations);
 
               if (error < bestError) {
                   bestError = error;
@@ -148,9 +151,8 @@ class SentimentTest {
           testingTime = end - start;
           testingTime /= Math.pow(10,9);
 
-          System.out.println("Final Results:");
           System.out.println("Train Error: " + df.format(bestError));
-          System.out.println("Test Percent Correct: " + df.format(correct/(correct+incorrect)*100));
+          System.out.println("Test Error: " + df.format(100 - (correct/(correct+incorrect)*100)));
           System.out.println("Training time: " + df.format(trainingTime));
           System.out.println("Testing time: " + df.format(testingTime));
       }
@@ -158,6 +160,7 @@ class SentimentTest {
 
   private static void experiment3(int trainingIterations, String bagSize, int numberOfRestart) {
       // EXPERIMENT 3 - Plotting learning curves for RHC, with 200 bagsize, 6000 iter, 8 random restarts.
+      System.out.println("\nEXPERIMENT3");
       double[] datasetPercentages = {0.05, 0.1, 0.3, 0.5, 0.7, 0.9};
 
       for (double datasetPercentage : datasetPercentages) {
@@ -185,7 +188,7 @@ class SentimentTest {
               OptimizationAlgorithm oa = new RandomizedHillClimbing(nnop);
 
               // Start Training
-              double error = train(oa, network, test_instances, trainingIterations);
+              double error = train(oa, network, train_instances, trainingIterations);
 
               if (error < bestError) {
                   bestError = error;
@@ -219,9 +222,8 @@ class SentimentTest {
           testingTime = end - start;
           testingTime /= Math.pow(10,9);
 
-          System.out.println("Final Results:");
           System.out.println("Train Error: " + df.format(bestError));
-          System.out.println("Test Percent Correct: " + df.format(correct/(correct+incorrect)*100));
+          System.out.println("Test Error: " + df.format(100 - (correct/(correct+incorrect)*100)));
           System.out.println("Training time: " + df.format(trainingTime));
           System.out.println("Testing time: " + df.format(testingTime));
       }
@@ -230,6 +232,7 @@ class SentimentTest {
 
   private static void experiment4(int trainingIterations, String bagSize) {
       // EXPERIMENT 4 - Plotting learning curves for SimAn, with 200 bagsize, 6000 iter
+      System.out.println("\nEXPERIMENT4");
       double[] datasetPercentages = {0.05, 0.1, 0.3, 0.5, 0.7, 0.9};
 
       for (double datasetPercentage : datasetPercentages) {
@@ -254,7 +257,7 @@ class SentimentTest {
           OptimizationAlgorithm oa = new SimulatedAnnealing(1E11, .95, nnop);
 
           // Start Training
-          double error = train(oa, network, test_instances, trainingIterations);
+          double error = train(oa, network, train_instances, trainingIterations);
 
           end = System.nanoTime();
           trainingTime = end - start;
@@ -281,9 +284,69 @@ class SentimentTest {
           testingTime = end - start;
           testingTime /= Math.pow(10,9);
 
-          System.out.println("Final Results:");
           System.out.println("Train Error: " + df.format(error));
-          System.out.println("Test Percent Correct: " + df.format(correct/(correct+incorrect)*100));
+          System.out.println("Test Error: " + df.format(100 - (correct/(correct+incorrect)*100)));
+          System.out.println("Training time: " + df.format(trainingTime));
+          System.out.println("Testing time: " + df.format(testingTime));
+      }
+
+  }
+
+  private static void experiment5(int trainingIterations, String bagSize) {
+      // EXPERIMENT 5 - Plotting learning curves for GenAlg, with 200 bagsize, 6000 iter
+      System.out.println("\nEXPERIMENT5");
+      double[] datasetPercentages = {0.05, 0.1, 0.3, 0.5, 0.7, 0.9};
+
+      for (double datasetPercentage : datasetPercentages) {
+          int bagSizeInt = Integer.parseInt(bagSize);
+
+          // Set up dataset.
+          Instance[] all_train_instances = initializeInstances(bagSize, false);
+          int lastIndex = (int)(all_train_instances.length * datasetPercentage);
+          Instance[] train_instances = Arrays.copyOfRange(all_train_instances, 0, lastIndex);
+          Instance[] test_instances = initializeInstances(bagSize, true);
+          DataSet set = new DataSet(train_instances);
+  
+          System.out.println("Training an NN with GenAlg and datasetPercentage=" + datasetPercentage);
+          double start = System.nanoTime(), end = 0, trainingTime = 0, testingTime = 0;
+          
+          // Set up optmization problem
+          BackPropagationNetwork network = factory.createClassificationNetwork(
+              new int[] {bagSizeInt, 10, 1});
+          NeuralNetworkOptimizationProblem nnop = new NeuralNetworkOptimizationProblem(set, network, measure);
+          // OptimizationAlgorithm oa = new StandardGeneticAlgorithm(200, 100, 10, nnop);
+          OptimizationAlgorithm oa = new StandardGeneticAlgorithm(100, 20, 3, nnop);
+
+          // Start Training
+          double error = train(oa, network, train_instances, trainingIterations);
+
+          end = System.nanoTime();
+          trainingTime = end - start;
+          trainingTime /= Math.pow(10,9);
+          
+          Instance optimalInstance = oa.getOptimal();
+          BackPropagationNetwork test_network = factory.createClassificationNetwork(
+              new int[] {bagSizeInt, 10, 1});
+          test_network.setWeights(optimalInstance.getData());
+
+          double correct = 0, incorrect = 0;
+          double predicted, actual;
+          start = System.nanoTime();
+          for(int j = 0; j < test_instances.length; j++) {
+              test_network.setInputValues(test_instances[j].getData());
+              test_network.run();
+
+              predicted = Double.parseDouble(test_instances[j].getLabel().toString());
+              actual = Double.parseDouble(test_network.getOutputValues().toString());
+              double trash = Math.abs(predicted - actual) < 0.5 ? correct++ : incorrect++;
+          }
+
+          end = System.nanoTime();
+          testingTime = end - start;
+          testingTime /= Math.pow(10,9);
+
+          System.out.println("Train Error: " + df.format(error));
+          System.out.println("Test Error: " + df.format(100 - (correct/(correct+incorrect)*100)));
           System.out.println("Training time: " + df.format(trainingTime));
           System.out.println("Testing time: " + df.format(testingTime));
       }
@@ -294,7 +357,7 @@ class SentimentTest {
                             BackPropagationNetwork network,
                             Instance[] testing,
                             int trainingIterations) {
-      double length = train_size;
+      double length = testing.length;
       double incorrect = 0;
       for(int i = 0; i < trainingIterations; i++) {
           incorrect = 0;

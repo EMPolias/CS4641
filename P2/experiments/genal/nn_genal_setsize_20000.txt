@@ -1,0 +1,32 @@
+EXPERIMENT5
+Training an NN with GenAlg and datasetPercentage=0.05
+Train Error: 20.952
+Test Error: 48.889
+Training time: 124.510
+Testing time: 0.004
+Training an NN with GenAlg and datasetPercentage=0.1
+Train Error: 37.143
+Test Error: 49.000
+Training time: 240.754
+Testing time: 0.004
+Training an NN with GenAlg and datasetPercentage=0.3
+Train Error: 37.937
+Test Error: 45.444
+Training time: 718.637
+Testing time: 0.004
+Training an NN with GenAlg and datasetPercentage=0.5
+Train Error: 46.000
+Test Error: 44.667
+Training time: 1194.293
+Testing time: 0.005
+Training an NN with GenAlg and datasetPercentage=0.7
+Train Error: 42.653
+Test Error: 44.222
+Training time: 2098.499
+Testing time: 0.008
+Training an NN with GenAlg and datasetPercentage=0.9
+Train Error: 47.937
+Test Error: 47.222
+Training time: 2615.593
+Testing time: 0.006
+

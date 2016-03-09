@@ -1,0 +1,31 @@
+EXPERIMENT4
+Training an NN with SimAn and bagSize=80 and datasetPercentage=0.05
+Train Error: 0.952
+Test Error: 47.000
+Training time: 4.561
+Testing time: 0.005
+Training an NN with SimAn and bagSize=80 and datasetPercentage=0.1
+Train Error: 8.571
+Test Error: 42.889
+Training time: 9.031
+Testing time: 0.004
+Training an NN with SimAn and bagSize=80 and datasetPercentage=0.3
+Train Error: 21.270
+Test Error: 39.333
+Training time: 27.331
+Testing time: 0.004
+Training an NN with SimAn and bagSize=80 and datasetPercentage=0.5
+Train Error: 27.143
+Test Error: 36.111
+Training time: 45.484
+Testing time: 0.004
+Training an NN with SimAn and bagSize=80 and datasetPercentage=0.7
+Train Error: 27.143
+Test Error: 36.778
+Training time: 65.983
+Testing time: 0.004
+Training an NN with SimAn and bagSize=80 and datasetPercentage=0.9
+Train Error: 30.053
+Test Error: 33.778
+Training time: 84.813
+Testing time: 0.004

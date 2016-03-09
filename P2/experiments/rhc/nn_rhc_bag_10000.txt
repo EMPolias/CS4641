@@ -1,0 +1,71 @@
+EXPERIMENT1
+Training NN with RHC and bagSize=5
+Train Error: 46.143
+Test Error: 47.444
+Training time: 101.740
+Testing time: 0.003
+Training NN with RHC and bagSize=10
+Train Error: 40.429
+Test Error: 40.889
+Training time: 105.216
+Testing time: 0.003
+Training NN with RHC and bagSize=20
+Train Error: 34.810
+Test Error: 44.333
+Training time: 112.282
+Testing time: 0.003
+Training NN with RHC and bagSize=40
+Train Error: 29.143
+Test Error: 42.222
+Training time: 131.805
+Testing time: 0.003
+Training NN with RHC and bagSize=80
+Train Error: 25.238
+Test Error: 32.111
+Training time: 165.862
+Testing time: 0.004
+Training NN with RHC and bagSize=120
+Train Error: 24.571
+Test Error: 41.000
+Training time: 207.350
+Testing time: 0.005
+Training NN with RHC and bagSize=160
+Train Error: 24.619
+Test Error: 39.111
+Training time: 242.085
+Testing time: 0.006
+Training NN with RHC and bagSize=200
+Train Error: 23.476
+Test Error: 38.333
+Training time: 304.929
+Testing time: 0.007
+Training NN with RHC and bagSize=300
+Train Error: 21.143
+Test Error: 39.889
+Training time: 482.206
+Testing time: 0.011
+Training NN with RHC and bagSize=500
+Train Error: 23.714
+Test Error: 38.444
+Training time: 827.403
+Testing time: 0.018
+Training NN with RHC and bagSize=700
+Train Error: 25.048
+Test Error: 41.667
+Training time: 1161.870
+Testing time: 0.028
+Training NN with RHC and bagSize=850
+Train Error: 25.714
+Test Error: 39.889
+Training time: 1412.485
+Testing time: 0.030
+Training NN with RHC and bagSize=1000
+Train Error: 29.286
+Test Error: 42.222
+Training time: 1582.958
+Testing time: 0.036
+Training NN with RHC and bagSize=1200
+Train Error: 28.333
+Test Error: 39.333
+Training time: 2068.308
+Testing time: 0.042

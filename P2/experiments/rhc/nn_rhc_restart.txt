@@ -1,0 +1,37 @@
+EXPERIMENT2
+Training multiple NNs with RHC and bagSize=80 and numberOfRestarts=1
+Train Error: 29.905
+Test Error: 33.889
+Training time: 93.220
+Testing time: 0.004
+Training multiple NNs with RHC and bagSize=80 and numberOfRestarts=2
+Train Error: 29.571
+Test Error: 32.667
+Training time: 185.015
+Testing time: 0.004
+Training multiple NNs with RHC and bagSize=80 and numberOfRestarts=3
+Train Error: 28.810
+Test Error: 32.889
+Training time: 281.671
+Testing time: 0.004
+Training multiple NNs with RHC and bagSize=80 and numberOfRestarts=5
+Train Error: 29.905
+Test Error: 33.222
+Training time: 469.449
+Testing time: 0.004
+Training multiple NNs with RHC and bagSize=80 and numberOfRestarts=8
+Train Error: 29.571
+Test Error: 33.222
+Training time: 821.301
+Testing time: 0.005
+Training multiple NNs with RHC and bagSize=80 and numberOfRestarts=10
+Train Error: 28.571
+Test Error: 31.889
+Training time: 1016.313
+Testing time: 0.005
+Training multiple NNs with RHC and bagSize=80 and numberOfRestarts=15
+Train Error: 27.810
+Test Error: 33.000
+Training time: 1501.533
+Testing time: 0.004
+
