@@ -22,7 +22,7 @@ import opt.ga.StandardGeneticAlgorithm;
 import opt.prob.GenericProbabilisticOptimizationProblem;
 import opt.prob.MIMIC;
 import opt.prob.ProbabilisticOptimizationProblem;
-import shared.FixedIterationTrainer;
+// import FixedIterationTrainerMod;
 
 /**
  * Copied from ContinuousPeaksTest
@@ -50,9 +50,9 @@ public class FourPeaksTest {
         double start, trainingTime, end = 0;
 
         RandomizedHillClimbing rhc = new RandomizedHillClimbing(hcp);      
-        FixedIterationTrainer fit = new FixedIterationTrainer(rhc, 200000);
+        FixedIterationTrainerMod fit = new FixedIterationTrainerMod(rhc, 200000);
         start = System.nanoTime();
-        fit.train();
+        fit.train(start);
         end = System.nanoTime();
         trainingTime = end - start;
         trainingTime /= Math.pow(10,9);
@@ -60,9 +60,9 @@ public class FourPeaksTest {
         System.out.println("RHC: " + ef.value(rhc.getOptimal()) + " Time: " + trainingTime);
         
         SimulatedAnnealing sa = new SimulatedAnnealing(1E11, .95, hcp);
-        fit = new FixedIterationTrainer(sa, 200000);
+        fit = new FixedIterationTrainerMod(sa, 200000);
         start = System.nanoTime();
-        fit.train();
+        fit.train(start);
         end = System.nanoTime();
         trainingTime = end - start;
         trainingTime = end - start;
@@ -71,9 +71,9 @@ public class FourPeaksTest {
         System.out.println("SA: " + ef.value(sa.getOptimal()) + " Time: " + trainingTime);
         
         StandardGeneticAlgorithm ga = new StandardGeneticAlgorithm(200, 100, 10, gap);
-        fit = new FixedIterationTrainer(ga, 1000);
+        fit = new FixedIterationTrainerMod(ga, 200000);
         start = System.nanoTime();
-        fit.train();
+        fit.train(start);
         end = System.nanoTime();
         trainingTime = end - start;
         trainingTime = end - start;
@@ -83,9 +83,9 @@ public class FourPeaksTest {
         System.out.println("GA: " + ef.value(ga.getOptimal()) + " Time: " + trainingTime);
         
         MIMIC mimic = new MIMIC(200, 20, pop);
-        fit = new FixedIterationTrainer(mimic, 1000);
+        fit = new FixedIterationTrainerMod(mimic, 200000);
         start = System.nanoTime();
-        fit.train();
+        fit.train(start);
         end = System.nanoTime();
         trainingTime = end - start;
         trainingTime = end - start;
