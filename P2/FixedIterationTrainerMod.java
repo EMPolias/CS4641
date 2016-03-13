@@ -38,7 +38,7 @@ public class FixedIterationTrainerMod {
 
         for (int i = 0; i < iterations; i++) {
             double fitness = trainer.train();
-            if (i % 1000 == 0) {
+            if (i % 100 == 0) {
                 end = System.nanoTime();
                 trainingTime = end - start;
                 trainingTime = end - start;
