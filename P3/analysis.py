@@ -26,7 +26,7 @@ def create_mapper(l):
     return {l[n] : n for n in xrange(len(l))}
 
 SentimentDataSetConverters = {}
-ApartmentDataSetConverters = {}
+ApartmentDataSetConverters = {'San Francisco': 1, 'New York': 0}
 
 converters = {"sentiment": SentimentDataSetConverters, "apartments": ApartmentDataSetConverters}
 
