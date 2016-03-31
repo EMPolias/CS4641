@@ -48,8 +48,9 @@ adultDataSetConverters = {
 }
 
 hillsDataSetConverters = {}
+SentimentDataSetConverters = {}
 
-converters = {"adult": adultDataSetConverters, "hill": hillsDataSetConverters}
+converters = {"adult": adultDataSetConverters, "hill": hillsDataSetConverters, "sentiment": SentimentDataSetConverters}
 
 
 def load(filename, converter):
@@ -97,8 +98,9 @@ def pca(tx, ty, rx, ry):
 
 def ica(tx, ty, rx, ry):
     compressor = ICA(whiten=True)  # for some people, whiten needs to be off
-    newtx = compressor.fit_transform(tx)
-    newrx = compressor.fit_transform(rx)
+    compressor.fit(tx, y=ty)
+    newtx = compressor.transform(tx)
+    newrx = compressor.transform(rx)
     em(newtx, ty, newrx, ry, add="wICAtr", times=10)
     km(newtx, ty, newrx, ry, add="wICAtr", times=10)
     nn(newtx, ty, newrx, ry, add="wICAtr")
@@ -106,9 +108,10 @@ def ica(tx, ty, rx, ry):
 
 def randproj(tx, ty, rx, ry):
     compressor = RandomProjection(tx[1].size)
-    newtx = compressor.fit_transform(tx)
-    compressor = RandomProjection(tx[1].size)
-    newrx = compressor.fit_transform(rx)
+    compressor.fit(tx, y=ty)
+    newtx = compressor.transform(tx)
+    # compressor = RandomProjection(tx[1].size)
+    newrx = compressor.transform(rx)
     em(newtx, ty, newrx, ry, add="wRPtr", times=10)
     km(newtx, ty, newrx, ry, add="wRPtr", times=10)
     nn(newtx, ty, newrx, ry, add="wRPtr")
@@ -116,8 +119,9 @@ def randproj(tx, ty, rx, ry):
 
 def kbest(tx, ty, rx, ry):
     compressor = best(chi2)
-    newtx = compressor.fit_transform(tx, ty)
-    newrx = compressor.fit_transform(rx, ry)
+    compressor.fit(tx, y=ty)
+    newtx = compressor.transform(tx)
+    newrx = compressor.transform(rx)
     em(newtx, ty, newrx, ry, add="wKBtr", times=10)
     km(newtx, ty, newrx, ry, add="wKBtr", times=10)
     nn(newtx, ty, newrx, ry, add="wKBtr")
@@ -213,11 +217,14 @@ def nn(tx, ty, rx, ry, add="", iterations=250):
     for i in xrange(len(tx)):
         ds.addSample(tx[i], [ty[i]])
     trainer = BackpropTrainer(network, ds, learningrate=0.01)
+    train = zip(tx, ty)
+    test = zip(rx, ry)
     for i in positions:
         trainer.train()
-        resultst.append(sum((np.array([round(network.activate(test)) for test in tx]) - ty)**2)/float(len(ty)))
-        resultsr.append(sum((np.array([round(network.activate(test)) for test in rx]) - ry)**2)/float(len(ry)))
-        print i
+        resultst.append(sum(np.array([(round(network.activate(t_x)) - t_y)**2 for t_x, t_y in train])/float(len(train))))
+        resultsr.append(sum(np.array([(round(network.activate(t_x)) - t_y)**2 for t_x, t_y in test])/float(len(test))))
+        # resultsr.append(sum((np.array([round(network.activate(test)) for test in rx]) - ry)**2)/float(len(ry)))
+        print i, resultst[-1], resultsr[-1]
     plot([0, iterations, 0, 1], (positions, resultst, "ro", positions, resultsr, "bo"), "Network Epoch", "Percent Error", "Neural Network Error", "NN"+add)
 
 
@@ -227,12 +234,13 @@ if __name__=="__main__":
     parser.add_argument("name")
     args = parser.parse_args()
     name = args.name
-    test = name+".data"
-    train = name+".test"
+    train = name+".data"
+    test = name+".test"
     train_x, train_y, test_x, test_y = create_dataset(name, test, train)
-    em(train_x, train_y, test_x, test_y, times = 10)
-    km(train_x, train_y, test_x, test_y, times = 10)
-    pca(train_x, train_y, test_x, test_y)
-    ica(train_x, train_y, test_x, test_y)
-    randproj(train_x, train_y, test_x, test_y)
+    # nn(train_x, train_y, test_x, test_y)
+    # em(train_x, train_y, test_x, test_y, times = 10)
+    # km(train_x, train_y, test_x, test_y, times = 10)
+    # pca(train_x, train_y, test_x, test_y)
+    # ica(train_x, train_y, test_x, test_y)
+    # randproj(train_x, train_y, test_x, test_y)
     kbest(train_x, train_y, test_x, test_y)
