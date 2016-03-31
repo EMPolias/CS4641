@@ -25,8 +25,10 @@ from pybrain.supervised.trainers import BackpropTrainer
 def create_mapper(l):
     return {l[n] : n for n in xrange(len(l))}
 
+apartment_map = create_mapper(["'New York'", "'San Francisco'"])
+
 SentimentDataSetConverters = {}
-ApartmentDataSetConverters = {'San Francisco': 1, 'New York': 0}
+ApartmentDataSetConverters = {8: lambda x: apartment_map[x]}
 
 converters = {"sentiment": SentimentDataSetConverters, "apartments": ApartmentDataSetConverters}
 
@@ -38,9 +40,7 @@ def load(filename, converter):
     return np.loadtxt(instances,
                       delimiter=',',
                       converters=converter,
-                      dtype='u4',
-                      skiprows=1
-                      )
+                      dtype='u4')
 
 def create_dataset(name, test, train):
     training_set = load(train, converters[name])
@@ -96,7 +96,7 @@ def randproj(tx, ty, rx, ry):
 
 
 def kbest(tx, ty, rx, ry):
-    compressor = best(chi2)
+    compressor = best(chi2, k=5)
     compressor.fit(tx, y=ty)
     newtx = compressor.transform(tx)
     newrx = compressor.transform(rx)
@@ -215,10 +215,10 @@ if __name__=="__main__":
     train = name+".data"
     test = name+".test"
     train_x, train_y, test_x, test_y = create_dataset(name, test, train)
-    # nn(train_x, train_y, test_x, test_y)
-    # em(train_x, train_y, test_x, test_y, times = 10)
-    # km(train_x, train_y, test_x, test_y, times = 10)
-    # pca(train_x, train_y, test_x, test_y)
-    # ica(train_x, train_y, test_x, test_y)
-    # randproj(train_x, train_y, test_x, test_y)
-    kbest(train_x, train_y, test_x, test_y)
+    nn(train_x, train_y, test_x, test_y); print 'nn done'
+    em(train_x, train_y, test_x, test_y, times = 10); print 'em done'
+    km(train_x, train_y, test_x, test_y, times = 10); print 'km done'
+    pca(train_x, train_y, test_x, test_y); print 'pca done'
+    ica(train_x, train_y, test_x, test_y); print 'ica done'
+    randproj(train_x, train_y, test_x, test_y); print 'randproj done'
+    kbest(train_x, train_y, test_x, test_y); print 'kbest done'
