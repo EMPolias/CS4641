@@ -27,10 +27,61 @@ def create_mapper(l):
 
 apartment_map = create_mapper(["'New York'", "'San Francisco'"])
 
+cap_shape = create_mapper(['b', 'c', 'f', 'x', 'k', 's'])
+cap_surface = create_mapper(['f', 'g', 'y', 's'])
+cap_color = create_mapper(['n', 'b', 'c', 'g', 'r', 'p', 'u', 'e', 'w', 'y'])
+bruises = create_mapper(['t', 'f'])
+odor = create_mapper(['a', 'l', 'c', 'y', 'f', 'm', 'n', 'p', 's'])
+gill_attach = create_mapper(['a', 'd', 'f', 'n'])
+gill_space = create_mapper(['c', 'w', 'd'])
+gill_size = create_mapper(['b', 'n'])
+gill_color = create_mapper(['k','n','b','h','g','r','o','p','u','e','w','y'])
+stalk_shape = create_mapper(['e','t'])
+stalk_root = create_mapper(['b','c','u','e','z','r','?'])
+stalk_surface_above_ring = create_mapper(['f','y','k','s'])
+stalk_surface_below_ring = create_mapper(['f','y','k','s'])
+stalk_color_above_ring = create_mapper(['n','b','c','g','o','p','e','w','y'])
+stalk_color_below_ring = create_mapper(['n','b','c','g','o','p','e','w','y'])
+veil_type = create_mapper(['p','u'])
+veil_color = create_mapper(['n','o','w','y'])
+ring_number = create_mapper(['n','o','t'])
+ring_type = create_mapper(['c','e','f','l','n','p','s','z'])
+spore_print_color = create_mapper(['k','n','b','h','r','o','u','w','y'])
+population = create_mapper(['a','c','n','s','v','y'])
+habitat = create_mapper(['g','l','m','p','u','w','d'])
+classification = create_mapper(['p','e'])
+
 SentimentDataSetConverters = {}
 ApartmentDataSetConverters = {8: lambda x: apartment_map[x]}
+MushroomsDatasetConverters = {
+    0: lambda x: cap_shape[x],
+    1: lambda x: cap_surface[x],
+    2: lambda x: cap_color[x],
+    3: lambda x: bruises[x],
+    4: lambda x: odor[x],
+    5: lambda x: gill_attach[x],
+    6: lambda x: gill_space[x],
+    7: lambda x: gill_size[x],
+    8: lambda x: gill_color[x],
+    9: lambda x: stalk_shape[x],
+    10: lambda x: stalk_root[x],
+    11: lambda x: stalk_surface_above_ring[x],
+    12: lambda x: stalk_surface_below_ring[x],
+    13: lambda x: stalk_color_above_ring[x],
+    14: lambda x: stalk_color_below_ring[x],
+    15: lambda x: veil_type[x],
+    16: lambda x: veil_color[x],
+    17: lambda x: ring_number[x],
+    18: lambda x: ring_type[x],
+    19: lambda x: spore_print_color[x],
+    20: lambda x: population[x],
+    21: lambda x: habitat[x],
+    22: lambda c: classification[c]
+    }
 
-converters = {"sentiment": SentimentDataSetConverters, "apartments": ApartmentDataSetConverters}
+converters = {"sentiment": SentimentDataSetConverters,
+              "apartments": ApartmentDataSetConverters,
+              "mushrooms": MushroomsDatasetConverters}
 
 
 def load(filename, converter):
@@ -96,7 +147,7 @@ def randproj(tx, ty, rx, ry):
 
 
 def kbest(tx, ty, rx, ry):
-    compressor = best(chi2, k=5)
+    compressor = best(chi2)
     compressor.fit(tx, y=ty)
     newtx = compressor.transform(tx)
     newrx = compressor.transform(rx)
