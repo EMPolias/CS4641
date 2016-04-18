@@ -126,7 +126,7 @@ def pca(tx, ty, rx, ry):
 
 
 def ica(tx, ty, rx, ry):
-    compressor = ICA(whiten=True)  # for some people, whiten needs to be off
+    compressor = ICA(whiten=False)  # for some people, whiten needs to be off
     compressor.fit(tx, y=ty)
     newtx = compressor.transform(tx)
     newrx = compressor.transform(rx)
@@ -266,10 +266,10 @@ if __name__=="__main__":
     train = name+".data"
     test = name+".test"
     train_x, train_y, test_x, test_y = create_dataset(name, test, train)
-    nn(train_x, train_y, test_x, test_y); print 'nn done'
-    em(train_x, train_y, test_x, test_y, times = 10); print 'em done'
-    km(train_x, train_y, test_x, test_y, times = 10); print 'km done'
-    pca(train_x, train_y, test_x, test_y); print 'pca done'
+    # nn(train_x, train_y, test_x, test_y); print 'nn done'
+    # em(train_x, train_y, test_x, test_y, times = 10); print 'em done'
+    # km(train_x, train_y, test_x, test_y, times = 10); print 'km done'
+    # pca(train_x, train_y, test_x, test_y); print 'pca done'
     ica(train_x, train_y, test_x, test_y); print 'ica done'
-    randproj(train_x, train_y, test_x, test_y); print 'randproj done'
-    kbest(train_x, train_y, test_x, test_y); print 'kbest done'
+    # randproj(train_x, train_y, test_x, test_y); print 'randproj done'
+    # kbest(train_x, train_y, test_x, test_y); print 'kbest done'
